@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Greeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 80px 20px;
+            background: #f0f8ff;
+        }
+        h1 {
+            font-size: 48px;
+            color: #333;
+        }
+        p {
+            font-size: 22px;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    {% if hour is none %}
+        <h1>Invalid or missing hour parameter.</h1>
+        <p>Please provide an hour between 0 and 23 in the query string, e.g., ?hour=9</p>
+    {% else %}
+        <h1>
+            {% if 5 <= hour < 12 %}
+                Good Morning!
+            {% elif 12 <= hour < 17 %}
+                Good Afternoon!
+            {% else %}
+                Good Night!
+            {% endif %}
+        </h1>
+        <p>The current hour is: {{ hour }}</p>
+    {% endif %}
+</body>
+</html>
